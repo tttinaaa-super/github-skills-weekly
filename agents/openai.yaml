@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Skills Weekly"
+  short_description: "Weekly rankings of active SKILL.md repos"
+  default_prompt: "Use $github-skills-weekly to find active GitHub repositories with SKILL.md files and rank them weekly."

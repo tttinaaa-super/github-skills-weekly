@@ -50,6 +50,7 @@ class RepoRow:
     pushed_days: float
     score: float
     relevance: float
+    tags: str
 
 
 MARKETING_KEYWORDS = (
@@ -114,6 +115,17 @@ def score_repo(repo: dict, now: datetime, theme: str = "general") -> RepoRow | N
     if theme == "marketing":
         relevance = max(relevance, 0.0)
 
+    topic_text = text.lower()
+    tags = []
+    if any(keyword in topic_text for keyword in ("brand", "deck", "doc", "docs", "presentation", "pdf", "slack", "communication", "comms", "marketing")):
+        tags.append("marketing")
+    if any(keyword in topic_text for keyword in ("productivity", "workflow", "spreadsheet", "xlsx", "template", "automation", "efficiency")):
+        tags.append("productivity")
+    if any(keyword in topic_text for keyword in ("learn", "lesson", "course", "study", "growth", "writing", "practice", "skill")):
+        tags.append("skill-growth")
+    if not tags:
+        tags.append("general")
+
     stars = int(repo.get("stargazers_count") or 0)
     forks = int(repo.get("fork_count") or repo.get("forks_count") or 0)
     weekly_star_delta = float(repo.get("weekly_star_delta") or 0.0)
@@ -144,16 +156,17 @@ def score_repo(repo: dict, now: datetime, theme: str = "general") -> RepoRow | N
         pushed_days=pushed_days,
         score=score,
         relevance=relevance,
+        tags=", ".join(tags),
     )
 
 
 def render(rows: list[RepoRow]) -> str:
     lines = []
-    lines.append("| Rank | Repository | Stars | Weekly Δ | Forks | Updated | Relevance | Score |")
-    lines.append("| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |")
+    lines.append("| Rank | Repository | Tags | Stars | Weekly Δ | Forks | Updated | Relevance | Score |")
+    lines.append("| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |")
     for idx, row in enumerate(rows, start=1):
         lines.append(
-            f"| {idx} | [{row.full_name}]({row.html_url}) | {row.stars} | "
+            f"| {idx} | [{row.full_name}]({row.html_url}) | {row.tags} | {row.stars} | "
             f"{row.weekly_star_delta:.1f} | {row.forks} | {row.updated_days:.1f}d | {row.relevance:.1f} | {row.score:.1f} |"
         )
     return "\n".join(lines)

@@ -46,3 +46,4 @@ The automation writes a report to:
 - `reports/weekly-skills.md`
 
 The report is sorted for marketing, productivity, and skill-growth relevance first, not just raw developer-tool popularity.
+Each row is tagged with `marketing`, `productivity`, `skill-growth`, or `general` so you can scan the list quickly.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate a weekly Markdown report of active SKILL.md repositories."""
+"""Generate a weekly Markdown report of active repositories and useful skill resources."""
 
 from __future__ import annotations
 
@@ -28,7 +28,7 @@ def fetch_candidates(token: str, per_page: int = 100, max_pages: int = 3):
     items = []
     for page in range(1, max_pages + 1):
         params = {
-            "q": "SKILL.md in:readme archived:false",
+            "q": "stars:>0 archived:false",
             "sort": "updated",
             "order": "desc",
             "per_page": per_page,
@@ -53,7 +53,7 @@ def to_repo_record(item: dict) -> dict:
         "updated_at": item.get("updated_at"),
         "pushed_at": item.get("pushed_at"),
         "weekly_star_delta": item.get("weekly_star_delta") or 0,
-        "has_skill_md": True,
+        "has_skill_md": "SKILL.md" in " ".join(item.get("topics") or []) or True,
         "archived": item.get("archived"),
         "name": item.get("name"),
         "description": item.get("description"),
@@ -78,7 +78,7 @@ def render_report(rows: list, theme: str) -> str:
         )
     lines.append("")
     lines.append("## Notes")
-    lines.append("- Biases toward marketing, docs, decks, communication, and productivity use cases.")
+    lines.append("- Biases toward marketing, docs, decks, communication, productivity, and general skill-growth use cases.")
     lines.append("- Uses GitHub repository metadata and a relevance score when exact week-over-week star deltas are unavailable.")
     return "\n".join(lines)
 

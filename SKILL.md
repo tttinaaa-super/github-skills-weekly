@@ -70,6 +70,7 @@ Produce a table with:
 
 - Rank
 - Repository
+- Tags
 - Owner
 - Stars
 - Star change
@@ -78,6 +79,7 @@ Produce a table with:
 - Why it ranked here
 
 Add a short methodology note that explains the search window and any proxy metrics used.
+Use the tags `marketing`, `productivity`, and `skill-growth` when they apply, and fall back to `general` when nothing stronger matches.
 
 ## Script
 

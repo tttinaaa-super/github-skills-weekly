@@ -1,14 +1,14 @@
 ---
 name: github-skills-weekly
-description: Find active GitHub repositories that contain a SKILL.md file, then rank them weekly by new stars, recency, forks, and activity so you can publish a fresh leaderboard.
+description: Find active weekly GitHub repositories, tools, and skill resources that can improve your marketing work, personal productivity, writing, presentations, and overall computer efficiency.
 ---
 
 # GitHub Skills Weekly
 
 ## What This Skill Does
 
-Use this skill to build a weekly leaderboard of active GitHub repositories that contain a `SKILL.md` file.
-It is meant for discovery work: scanning the GitHub ecosystem, filtering to maintained repos, and ranking candidates for a newsletter, digest, or internal watchlist.
+Use this skill to build a weekly leaderboard of active GitHub repositories, tools, and skill resources that help with marketing, writing, presentations, docs, spreadsheets, Slack, daily computer work, or general skill growth.
+It is meant for discovery work: scanning the GitHub ecosystem, filtering to maintained projects, and ranking candidates for a newsletter, digest, or internal watchlist.
 
 ## When To Use It
 
@@ -16,19 +16,19 @@ It is meant for discovery work: scanning the GitHub ecosystem, filtering to main
 - You need to find fresh or recently updated repositories that ship `SKILL.md`.
 - You want a ranked view based on stars, recent star growth, forks, and update recency.
 - You want a repeatable query/reporting workflow rather than a one-off search.
-- You want the shortlist filtered toward non-coding skills that help with marketing, writing, presentations, docs, spreadsheets, Slack, or daily computer work.
+- You want the shortlist filtered toward tools, workflows, and resources that help with marketing, writing, presentations, docs, spreadsheets, Slack, daily computer work, or general skill improvement.
 
 ## Workflow
 
-1. Collect candidate repositories.
-2. Verify each repo actually contains `SKILL.md`.
+1. Collect candidate repositories, tools, and skill resources.
+2. Verify the project is active and relevant.
 3. Measure activity signals.
 4. Normalize and rank the results.
 5. Write out a weekly report with the cutoff date and score breakdown.
 
 ## Collection Rules
 
-- Search GitHub for repositories that mention `SKILL.md` or are clearly skill-related.
+- Search GitHub Trending weekly, relevant topics, and repositories that mention `SKILL.md` or similar skill-related terms.
 - Prefer repos with recent commits or releases.
 - Exclude archived or empty repos when possible.
 - When results are noisy, tighten the search by language, topic, or recent activity window.
@@ -41,7 +41,7 @@ Use a weighted score built from:
 - Repository update recency.
 - Fork count.
 - Recent commit or release activity.
-- Optional bonus for repos that add or update `SKILL.md` recently.
+- Optional bonus for projects that add or update `SKILL.md` recently.
 - Relevance to marketing or productivity workflows.
 
 If exact week-over-week star deltas are unavailable, use the best available proxy and note it in the report.
@@ -83,4 +83,4 @@ Add a short methodology note that explains the search window and any proxy metri
 
 Use `scripts/weekly_rank.py` when you want a repeatable local summary from exported repository data.
 The script expects JSON input from a GitHub query or API export and outputs a ranked Markdown table.
-It supports a `--theme marketing` mode that boosts presentation, writing, communication, docs, and productivity-oriented results.
+It supports a `--theme marketing` mode that boosts presentation, writing, communication, docs, productivity, and general skill-growth results.

@@ -1,18 +1,19 @@
 # GitHub Skills Weekly
 
-Weekly GitHub skill discovery for non-coding, marketing-friendly, and productivity-focused workflows.
+Weekly GitHub discovery for marketing-friendly, productivity-focused, and general skill-growth resources.
 
 ## What this repo does
 
-- Finds active GitHub repositories that contain `SKILL.md`
+- Finds active GitHub repositories, tools, and skill resources
 - Ranks them by recent stars, recency, forks, and activity
-- Biases results toward skills that are useful for marketing, writing, decks, docs, spreadsheets, Slack, and daily computer work
+- Biases results toward things that are useful for marketing, writing, decks, docs, spreadsheets, Slack, daily computer work, and general skill growth
 
 ## Files
 
 - `SKILL.md` - Codex skill instructions
 - `agents/openai.yaml` - UI metadata for the skill picker
 - `scripts/weekly_rank.py` - Rank exported repository data into a Markdown leaderboard
+- `scripts/generate_weekly_report.py` - Fetch GitHub weekly candidates and generate a report
 
 ## How to use the ranking script
 
@@ -44,4 +45,4 @@ The automation writes a report to:
 
 - `reports/weekly-skills.md`
 
-The report is sorted for marketing and daily productivity relevance first, not just raw developer-tool popularity.
+The report is sorted for marketing, productivity, and skill-growth relevance first, not just raw developer-tool popularity.
